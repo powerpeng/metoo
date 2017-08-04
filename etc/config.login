@@ -1,5 +1,5 @@
 skynetroot = "./skynet/"
-thread = 8
+thread = 1
 logger = nil
 logpath = "."
 harbor = 0
@@ -17,7 +17,7 @@ loginservice = "./login/?.lua;" ..
 			   "./common/cluster/?.lua;" ..
 			   "./common/datacenter/?.lua"
 
--- LUA服务所在位置
+-- LUA服务所在位�?
 luaservice = skynetroot .. "service/?.lua;" .. loginservice
 snax = loginservice
 
@@ -25,17 +25,17 @@ snax = loginservice
 lualoader = skynetroot .. "lualib/loader.lua"
 preload = "./global/preload.lua"	-- run preload.lua before every lua service run
 
--- C编写的服务模块路径
+-- C编写的服务模块路�?
 cpath = skynetroot .. "cservice/?.so"
 
--- 将添加到 package.path 中的路径，供 require 调用。
+-- 将添加到 package.path 中的路径，供 require 调用�?
 lua_path = skynetroot .. "lualib/?.lua;" ..
 		   "./lualib/?.lua;" ..
 		   "./global/?.lua;" ..
 		   "./common/entitybase/?.lua;" ..
 		   "./common/entity/?.lua"
 
--- 将添加到 package.cpath 中的路径，供 require 调用。
+-- 将添加到 package.cpath 中的路径，供 require 调用�?
 lua_cpath = skynetroot .. "luaclib/?.so;" .. "./luaclib/?.so"
 
 -- 后台模式
@@ -43,16 +43,16 @@ lua_cpath = skynetroot .. "luaclib/?.so;" .. "./luaclib/?.so"
 
 port = $METOO_PORT				-- 监听端口
 
-mysql_maxconn = 10					-- mysql数据库最大连接数
-mysql_host = "$METOO_MYSQL_HOST"	-- mysql数据库主机
-mysql_port = $METOO_MYSQL_PORT		-- mysql数据库端口
-mysql_db = "$METOO_MYSQL_DB"		-- mysql数据库库名
-mysql_user = "$METOO_MYSQL_USER"	-- mysql数据库帐号
-mysql_pwd = "$METOO_MYSQL_PWD"		-- mysql数据库密码
+mysql_maxconn = 2					-- mysql数据库最大连接数
+mysql_host = "$METOO_MYSQL_HOST"	-- mysql数据库主�?
+mysql_port = $METOO_MYSQL_PORT		-- mysql数据库端�?
+mysql_db = "$METOO_MYSQL_DB"		-- mysql数据库库�?
+mysql_user = "$METOO_MYSQL_USER"	-- mysql数据库帐�?
+mysql_pwd = "$METOO_MYSQL_PWD"		-- mysql数据库密�?
 
 redis_maxinst = 1			-- redis最大实例数
-
+redis_index = 1
 redis_host1 = "127.0.0.1"	-- redis数据库IP
-redis_port1 = 6379			-- redis数据库端口
-redis_auth1 = "123456"		-- redis数据库密码
+redis_port1 = 6379			-- redis数据库端�?
+redis_auth1 = "123456"		-- redis数据库密�?
 
