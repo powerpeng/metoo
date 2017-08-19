@@ -1,5 +1,5 @@
 skynetroot = "./skynet/"
-thread = 1
+thread = 2
 logger = nil
 logpath = "."
 harbor = 0
@@ -8,7 +8,7 @@ bootstrap = "snlua bootstrap"	-- The service for bootstrap
 
 debug_port = 8001
 
--- é›†ç¾¤åç§°é…ç½®æ–‡ä»¶
+-- ¼¯ÈºÃû³ÆÅäÖÃÎÄ¼þ
 cluster = "./cluster/clustername.lua"
 nodename = "game"
 
@@ -22,54 +22,43 @@ gameservice = "./game/?.lua;" ..
 			  "./common/cluster/?.lua;" ..
 			  "./common/datacenter/?.lua"
 
--- LUAæœåŠ¡æ‰€åœ¨ä½ç½?
+-- LUA·þÎñËùÔÚÎ»ÖÃ
 luaservice = skynetroot .. "service/?.lua;" .. gameservice
 snax = gameservice
 
--- ç”¨äºŽåŠ è½½LUAæœåŠ¡çš„LUAä»£ç 
+-- ÓÃÓÚ¼ÓÔØLUA·þÎñµÄLUA´úÂë
 lualoader = skynetroot .. "lualib/loader.lua"
 preload = "./global/preload.lua"	-- run preload.lua before every lua service run
 
--- Cç¼–å†™çš„æœåŠ¡æ¨¡å—è·¯å¾?
+-- C±àÐ´µÄ·þÎñÄ£¿éÂ·¾¶
 cpath = skynetroot .. "cservice/?.so"
 
--- å°†æ·»åŠ åˆ° package.path ä¸­çš„è·¯å¾„ï¼Œä¾› require è°ƒç”¨ã€?
+-- ½«Ìí¼Óµ½ package.path ÖÐµÄÂ·¾¶£¬¹© require µ÷ÓÃ¡£
 lua_path = skynetroot .. "lualib/?.lua;" ..
 		   "./lualib/?.lua;" ..
 		   "./global/?.lua;" ..
 		   "./common/entitybase/?.lua;" ..
 		   "./common/entity/?.lua"
 
--- å°†æ·»åŠ åˆ° package.cpath ä¸­çš„è·¯å¾„ï¼Œä¾› require è°ƒç”¨ã€?
+-- ½«Ìí¼Óµ½ package.cpath ÖÐµÄÂ·¾¶£¬¹© require µ÷ÓÃ¡£
 lua_cpath = skynetroot .. "luaclib/?.so;" .. "./luaclib/?.so"
 
--- åŽå°æ¨¡å¼
+-- ºóÌ¨Ä£Ê½
 --daemon = "./game.pid"
 
-port = 5189					-- ç›‘å¬ç«¯å£
-maxclient = 100				-- æœ€å¤§è¿žæŽ¥æ•°
+port = 5189					-- ¼àÌý¶Ë¿Ú
+maxclient = 100				-- ×î´óÁ¬½ÓÊý
 
-mysql_maxconn = 2					-- mysqlæ•°æ®åº“æœ€å¤§è¿žæŽ¥æ•°
-mysql_host = "$METOO_MYSQL_HOST"	-- mysqlæ•°æ®åº“ä¸»æœ?
-mysql_port = $METOO_MYSQL_PORT		-- mysqlæ•°æ®åº“ç«¯å?
-mysql_db = "$METOO_MYSQL_DB"		-- mysqlæ•°æ®åº“åº“å?
-mysql_user = "$METOO_MYSQL_USER"	-- mysqlæ•°æ®åº“å¸å?
-mysql_pwd = "$METOO_MYSQL_PWD"		-- mysqlæ•°æ®åº“å¯†ç ?
+mysql_maxconn = 2					-- mysqlÊý¾Ý¿â×î´óÁ¬½ÓÊý
+mysql_host = "$METOO_MYSQL_HOST"	-- mysqlÊý¾Ý¿âÖ÷»ú
+mysql_port = $METOO_MYSQL_PORT		-- mysqlÊý¾Ý¿â¶Ë¿Ú
+mysql_db = "$METOO_MYSQL_DB"		-- mysqlÊý¾Ý¿â¿âÃû
+mysql_user = "$METOO_MYSQL_USER"	-- mysqlÊý¾Ý¿âÕÊºÅ
+mysql_pwd = "$METOO_MYSQL_PWD"		-- mysqlÊý¾Ý¿âÃÜÂë
 
-redis_maxinst = 1			-- redisæœ€å¤§å®žä¾‹æ•°
 redis_index = 2
-redis_host1 = "127.0.0.1"	-- redisæ•°æ®åº“IP
-redis_port1 = 6379			-- redisæ•°æ®åº“ç«¯å?
-redis_auth1 = "123456"		-- redisæ•°æ®åº“å¯†ç ?
+redis_maxinst = 1			-- redis×î´óÊµÀýÊý
+redis_host1 = "127.0.0.1"	-- redisÊý¾Ý¿âIP
+redis_port1 = 6379			-- redisÊý¾Ý¿â¶Ë¿Ú¡¤¡¤
+redis_auth1 = "123456"		-- redisÊý¾Ý¿âÃÜÂë
 
---redis_host2 = "127.0.0.1"	-- redisæ•°æ®åº“IP
---redis_port2 = 6381			-- redisæ•°æ®åº“ç«¯å?
---redis_auth2 = "123456"		-- redisæ•°æ®åº“å¯†ç ?
-
---redis_host3 = "127.0.0.1"	-- redisæ•°æ®åº“IP
---redis_port3 = 6382			-- redisæ•°æ®åº“ç«¯å?
---redis_auth3 = "123456"		-- redisæ•°æ®åº“å¯†ç ?
-
---redis_host4 = "127.0.0.1"	-- redisæ•°æ®åº“IP
---redis_port4 = 6383			-- redisæ•°æ®åº“ç«¯å?
---redis_auth4 = "123456"		-- redisæ•°æ®åº“å¯†ç ?

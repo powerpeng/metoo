@@ -1,12 +1,12 @@
 skynetroot = "./skynet/"
-thread = 1
+thread = 2
 logger = nil
 logpath = "."
 harbor = 0
 start = "main"	-- main script
 bootstrap = "snlua bootstrap"	-- The service for bootstrap
 
--- 闆嗙兢鍚嶇О閰嶇疆鏂囦欢
+-- 集群名称配置文件
 cluster = "./cluster/clustername.lua"
 
 log_dirname = "log"
@@ -17,42 +17,42 @@ loginservice = "./login/?.lua;" ..
 			   "./common/cluster/?.lua;" ..
 			   "./common/datacenter/?.lua"
 
--- LUA鏈嶅姟鎵�鍦ㄤ綅缃?
+-- LUA服务所在位置
 luaservice = skynetroot .. "service/?.lua;" .. loginservice
 snax = loginservice
 
--- 鐢ㄤ簬鍔犺浇LUA鏈嶅姟鐨凩UA浠ｇ爜
+-- 用于加载LUA服务的LUA代码
 lualoader = skynetroot .. "lualib/loader.lua"
 preload = "./global/preload.lua"	-- run preload.lua before every lua service run
 
--- C缂栧啓鐨勬湇鍔℃ā鍧楄矾寰?
+-- C编写的服务模块路径
 cpath = skynetroot .. "cservice/?.so"
 
--- 灏嗘坊鍔犲埌 package.path 涓殑璺緞锛屼緵 require 璋冪敤銆?
+-- 将添加到 package.path 中的路径，供 require 调用。
 lua_path = skynetroot .. "lualib/?.lua;" ..
 		   "./lualib/?.lua;" ..
 		   "./global/?.lua;" ..
 		   "./common/entitybase/?.lua;" ..
 		   "./common/entity/?.lua"
 
--- 灏嗘坊鍔犲埌 package.cpath 涓殑璺緞锛屼緵 require 璋冪敤銆?
+-- 将添加到 package.cpath 中的路径，供 require 调用。
 lua_cpath = skynetroot .. "luaclib/?.so;" .. "./luaclib/?.so"
 
--- 鍚庡彴妯″紡
+-- 后台模式
 --daemon = "./login.pid"
 
-port = $METOO_PORT				-- 鐩戝惉绔彛
+port = $METOO_PORT				-- 监听端口
 
-mysql_maxconn = 2					-- mysql鏁版嵁搴撴渶澶ц繛鎺ユ暟
-mysql_host = "$METOO_MYSQL_HOST"	-- mysql鏁版嵁搴撲富鏈?
-mysql_port = $METOO_MYSQL_PORT		-- mysql鏁版嵁搴撶鍙?
-mysql_db = "$METOO_MYSQL_DB"		-- mysql鏁版嵁搴撳簱鍚?
-mysql_user = "$METOO_MYSQL_USER"	-- mysql鏁版嵁搴撳笎鍙?
-mysql_pwd = "$METOO_MYSQL_PWD"		-- mysql鏁版嵁搴撳瘑鐮?
+mysql_maxconn = 2					-- mysql数据库最大连接数
+mysql_host = "$METOO_MYSQL_HOST"	-- mysql数据库主机
+mysql_port = $METOO_MYSQL_PORT		-- mysql数据库端口
+mysql_db = "$METOO_MYSQL_DB"		-- mysql数据库库名
+mysql_user = "$METOO_MYSQL_USER"	-- mysql数据库帐号
+mysql_pwd = "$METOO_MYSQL_PWD"		-- mysql数据库密码
 
-redis_maxinst = 1			-- redis鏈�澶у疄渚嬫暟
+redis_maxinst = 1			-- redis最大实例数
 redis_index = 1
-redis_host1 = "127.0.0.1"	-- redis鏁版嵁搴揑P
-redis_port1 = 6379			-- redis鏁版嵁搴撶鍙?
-redis_auth1 = "123456"		-- redis鏁版嵁搴撳瘑鐮?
+redis_host1 = "127.0.0.1"	-- redis数据库IP
 
+redis_port1 = 6379			-- redis数据库端口
+redis_auth1 = "123456"		-- redis数据库密码
