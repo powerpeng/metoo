@@ -19,17 +19,15 @@ end
 
 function CMD.start()
 	maxconn = tonumber(skynet.getenv("redis_maxinst")) or 2
-         local index = tonumber(skynet.getenv("redis_index"))
 	for i = 1, maxconn do
 		local db = redis.connect{
 			host = skynet.getenv("redis_host" .. i),
 			port = skynet.getenv("redis_port" .. i),
-			db = 0,
+			db = tonumber(skynet.getenv("redis_index")),
 			auth = skynet.getenv("redis_auth" .. i),
 		}
 
 		if db then
-                            db:select(index)
 			db:flushdb() --测试期，清理redis数据
 			table.insert(pool, db)
 		else
